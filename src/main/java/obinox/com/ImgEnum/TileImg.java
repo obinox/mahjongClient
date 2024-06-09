@@ -1,4 +1,6 @@
-package obinox.com;
+package obinox.com.ImgEnum;
+
+import obinox.com.MahjongFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -81,6 +83,7 @@ public enum TileImg {
     }
     private static final Map<String, TileImg> strFinder = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(TileImg::getStr, e->e)));
     public static TileImg of(String str){
-        return strFinder.get(str);
+        TileImg out = strFinder.get(str);
+        return Objects.requireNonNullElse(out, BACK);
     }
 }
