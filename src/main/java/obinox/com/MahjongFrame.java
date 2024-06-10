@@ -214,6 +214,12 @@ public class MahjongFrame extends JFrame {
                 Tile0BtnHover = false;
                 Tile0Btn.setBounds(tileStart+tileWidth*handLen+tileSep*handLen+tileTsumo,screenHeight-tileHeight-tilePad, tileWidth, tileHeight+tileHoverPad);
             }
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (canInput){
+                    out.println("===Click:"+handLen);
+                }
+            }
         });
         this.add(Tile0Btn);
     }
@@ -387,7 +393,7 @@ public class MahjongFrame extends JFrame {
                 x = kawaStartWidth+kawaTileWidth*(6+i%6)+tileSep*(6+i%6);
                 y = kawaStartHeight+kawaTileHeight*2+tileSep*2;
             }
-            if (Math.min(i/6, 2) == myRiichi/6 && i>myRiichi){
+            if (Math.min(i/6, 2) == myRiichi/6 && i>myRiichi && myRiichi >= 0){
                 x += kawaTileHeight - kawaTileWidth;
             }
             if (i==myRiichi){
@@ -414,7 +420,7 @@ public class MahjongFrame extends JFrame {
                 x = kamiKawaStartWidth -kawaTileHeight*(2+i/6)-tileSep*(2+i/6);
                 y = kamiKawaStartHeight +kawaTileWidth*(6+i%6)+tileSep*(6+i%6);
             }
-            if (Math.min(i/6, 2) == shimoRiichi/6 && i>shimoRiichi){
+            if (Math.min(i/6, 2) == shimoRiichi/6 && i>shimoRiichi && shimoRiichi >= 0){
                 y += kawaTileHeight - kawaTileWidth;
             }
             if (i==shimoRiichi){
@@ -441,7 +447,7 @@ public class MahjongFrame extends JFrame {
                 x = shimoKawaStartWidth +kawaTileHeight*(2+i/6)+tileSep*(2+i/6);
                 y = shimoKawaStartHeight -kawaTileWidth*(6+i%6)-tileSep*(6+i%6);
             }
-            if (Math.min(i/6, 2) == kamiRiichi/6 && i>=kamiRiichi){
+            if (Math.min(i/6, 2) == kamiRiichi/6 && i>=kamiRiichi && kamiRiichi >= 0){
                 y -= kawaTileHeight - kawaTileWidth;
             }
             if (i==kamiRiichi){
@@ -468,7 +474,7 @@ public class MahjongFrame extends JFrame {
                 x = toiKawaStartWidth-kawaTileWidth*(6+i%6)-tileSep*(6+i%6);
                 y = toiKawaStartHeight-kawaTileHeight*2-tileSep*2;
             }
-            if (Math.min(i/6, 2) == toiRiichi/6 && i>=toiRiichi){
+            if (Math.min(i/6, 2) == toiRiichi/6 && i>=toiRiichi && toiRiichi >= 0){
                 x -= kawaTileHeight - kawaTileWidth;
             }
             if (i==toiRiichi){

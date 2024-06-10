@@ -15,6 +15,7 @@ public class Client {
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
             mf.out = out;
             mf.in = in;
+
             new Thread(() -> {
                 try {
                     String message;
@@ -28,6 +29,16 @@ public class Client {
                             mf.tsumoString = message.substring(9);
                         } else if (message.startsWith("===input:")){
                             mf.canInput = message.substring(9).equals("0");
+                        } else if (message.startsWith("===kawa0:")){
+                            mf.myKawaString = message.substring(9);
+                        } else if (message.startsWith("===kawa1:")){
+                            mf.shimoKawaString = message.substring(9);
+                        } else if (message.startsWith("===kawa2:")){
+                            mf.toiKawaString = message.substring(9);
+                        } else if (message.startsWith("===kawa3:")){
+                            mf.kamiKawaString = message.substring(9);
+                        } else if (message.startsWith("===dora:")){
+                            mf.doraString = message.substring(8);
                         }
                         System.out.println(message);
                     }
