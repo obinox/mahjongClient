@@ -39,6 +39,8 @@ public class Client {
                             mf.kamiKawaString = message.substring(9);
                         } else if (message.startsWith("===dora:")){
                             mf.doraString = message.substring(8);
+                        } else if (message.startsWith("===gameend:")){
+                            System.exit(1);
                         }
                         System.out.println(message);
                     }
